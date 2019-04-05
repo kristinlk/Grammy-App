@@ -27,32 +27,34 @@
 
     
         <div style="height: 78px; float: left; margin-top: 35px; top:0;" id="Category">
-            <asp:DropDownList ID="DropDownList2" runat="server">
-                <asp:ListItem>Record of the Year</asp:ListItem>
-                <asp:ListItem>Album of the Year</asp:ListItem>
-                <asp:ListItem>Song of the Year</asp:ListItem>
+            <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True">
                 <asp:ListItem>Best New Artist</asp:ListItem>
-                <asp:ListItem>Best Country Song</asp:ListItem>
-                <asp:ListItem>Best Rap Song</asp:ListItem>
-                <asp:ListItem>Best R&amp;B Song</asp:ListItem>
-                <asp:ListItem>Best Rock Song</asp:ListItem>
+                <asp:ListItem>Album of the Year</asp:ListItem>
+                <asp:ListItem>Record of the Year</asp:ListItem>
+                <asp:ListItem>Song of the Year</asp:ListItem>
                 <asp:ListItem>Best Alternative Album</asp:ListItem>
-                <asp:ListItem>Best American Roots Album</asp:ListItem>
                 <asp:ListItem>Best Bluegrass Album</asp:ListItem>
                 <asp:ListItem>Best Comedy Album</asp:ListItem>
                 <asp:ListItem>Best Country Album</asp:ListItem>
-                <asp:ListItem>Best Dance/Electronic Album</asp:ListItem>
+                <asp:ListItem>Best Electronic Album</asp:ListItem>
                 <asp:ListItem>Best Folk Album</asp:ListItem>
                 <asp:ListItem>Best Gospel Album</asp:ListItem>
-                <asp:ListItem>Best Jazz Vocal Album</asp:ListItem>
-                <asp:ListItem>Best Latin Pop Album</asp:ListItem>
+                <asp:ListItem>Best Jazz Album</asp:ListItem>
+                <asp:ListItem>Best Latin Album</asp:ListItem>
                 <asp:ListItem>Best New Age Album</asp:ListItem>
-                <asp:ListItem>Best Pop Vocal Album</asp:ListItem>
+                <asp:ListItem>Best Pop Album</asp:ListItem>
                 <asp:ListItem>Best R&amp;B Album</asp:ListItem>
                 <asp:ListItem>Best Rap Album</asp:ListItem>
                 <asp:ListItem>Best Reggae Album</asp:ListItem>
                 <asp:ListItem>Best Rock Album</asp:ListItem>
                 <asp:ListItem>Best World Music Album</asp:ListItem>
+
+
+                <asp:ListItem>Best America Roots Song</asp:ListItem>
+                <asp:ListItem>Best Country Song</asp:ListItem>
+                <asp:ListItem>Best Rap Song</asp:ListItem>
+                <asp:ListItem>Best R&amp;B Song</asp:ListItem>
+                <asp:ListItem>Best Rock Song</asp:ListItem>
 
 
             </asp:DropDownList>
@@ -61,7 +63,47 @@
         <div id="Year" style="float: left; width: 106px; height: 84px; margin-top: 35px;">
             <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="year" DataValueField="year">
             </asp:DropDownList>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CIS_556ConnectionString %>" SelectCommand="SELECT distinct year FROM album_nomination ORDER BY year"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CIS_556ConnectionString %>" SelectCommand="select distinct year
+from album_nomination
+where (@DropDownList2 = 'Album of the Year' and genre_id = 1) 
+or (@DropDownList2 = 'Best Alternative Album' and genre_id = 2) 
+or (@DropDownList2 = 'Best Bluegrass Album' and genre_id = 4) 
+or (@DropDownList2 = 'Best Comedy Album' and genre_id = 5) 
+or (@DropDownList2 = 'Best Country Album' and genre_id = 6) 
+or (@DropDownList2 = 'Best Electronic Album' and genre_id = 7)  
+or (@DropDownList2 = 'Best Gospel Album' and genre_id = 8) 
+or (@DropDownList2 = 'Best Folk Album' and genre_id = 9) 
+or (@DropDownList2 = 'Best Jazz Album' and genre_id = 10)
+or (@DropDownList2 = 'Best Latin Album' and genre_id = 11)  
+or (@DropDownList2 = 'Best New Age Album' and genre_id = 12) 
+or (@DropDownList2 = 'Best Pop Album' and genre_id = 13)  
+or (@DropDownList2 = 'Best R&amp;B Album' and genre_id = 14)
+or (@DropDownList2 = 'Best Rap Album' and genre_id = 15)
+or (@DropDownList2 = 'Best Reggae Album' and genre_id = 16) 
+or (@DropDownList2 = 'Best Rock Album' and genre_id = 17)  
+or (@DropDownList2 = 'Best World Music Album' and genre_id = 18)
+union 
+select distinct year
+from song_nomination
+where (@DropDownList2 = 'Song of the Year' and genre_id = 1) 
+or (@DropDownList2 = 'America Roots Song' and genre_id = 3) 
+or (@DropDownList2 = 'Country Song' and genre_id = 6) 
+or (@DropDownList2 = 'Best R&amp;B Song' and genre_id = 14) 
+or (@DropDownList2 = 'Best Rap Song' and genre_id = 15) 
+or (@DropDownList2 = 'Best Rock Song' and genre_id = 17) 
+union 
+select distinct year
+from record_nomination
+where (@DropDownList2 = 'Best New Record') 
+union 
+select distinct year
+from artist_nomination
+where (@DropDownList2 = 'Best New Artist') 
+order by year">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="DropDownList2" DefaultValue="" Name="DropDownList2" PropertyName="SelectedValue" />
+                </SelectParameters>
+            </asp:SqlDataSource>
     
         </div>
 

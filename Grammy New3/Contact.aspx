@@ -4,7 +4,7 @@
     <h3>Contact</h3>
 
     <address>
-        <strong>Support:</strong>   <a href="mailto:kkovarik@umich.edu">kkovarik@umich.edu</a><br />
-        <strong>Marketing:</strong> <a href="mailto:ddoellst@umich.edu">ddoellst@umich.edu</a>
+        <strong>CIS556 Student 1:</strong>   <a href="mailto:kkovarik@umich.edu">kkovarik@umich.edu</a><br />
+        <strong>CIS556 Student 2:</strong> <a href="mailto:ddoellst@umich.edu">ddoellst@umich.edu</a>
     </address>
 </asp:Content>
