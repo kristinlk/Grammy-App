@@ -4,6 +4,14 @@
 
 <html lang="en">
 <head runat="server">
+
+    
+    <style>
+        #div1{
+
+        }
+    </style>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - My ASP.NET Application</title>
@@ -61,9 +69,7 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Developed by Kristin Kovarik and David Doellstedt</p>
-            </footer>
+
         </div>
 
     </form>
