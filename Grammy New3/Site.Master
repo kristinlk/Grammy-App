@@ -61,6 +61,10 @@
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
+                        <li><a runat="server" href="~/Artist">Artist</a></li>
+                        <li><a runat="server" href="~/Album">Album</a></li>
+                        <li><a runat="server" href="~/Song">Song</a></li>
+                        <li><a runat="server" href="~/SongWriter">SongWriter</a></li>
                     </ul>
                 </div>
             </div>
