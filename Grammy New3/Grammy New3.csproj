@@ -111,10 +111,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SongWriter.aspx" />
-    <Content Include="Song.aspx" />
-    <Content Include="Album.aspx" />
-    <Content Include="Artist.aspx" />
+    <Content Include="ArtistAlbumSong.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -172,33 +169,12 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SongWriter.aspx.cs">
-      <DependentUpon>SongWriter.aspx</DependentUpon>
+    <Compile Include="ArtistAlbumSong.aspx.cs">
+      <DependentUpon>ArtistAlbumSong.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SongWriter.aspx.designer.cs">
-      <DependentUpon>SongWriter.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Song.aspx.cs">
-      <DependentUpon>Song.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Song.aspx.designer.cs">
-      <DependentUpon>Song.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Album.aspx.cs">
-      <DependentUpon>Album.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Album.aspx.designer.cs">
-      <DependentUpon>Album.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Artist.aspx.cs">
-      <DependentUpon>Artist.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Artist.aspx.designer.cs">
-      <DependentUpon>Artist.aspx</DependentUpon>
+    <Compile Include="ArtistAlbumSong.aspx.designer.cs">
+      <DependentUpon>ArtistAlbumSong.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
