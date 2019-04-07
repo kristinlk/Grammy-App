@@ -49,7 +49,7 @@
                 <asp:ListItem>Best World Music Album</asp:ListItem>
 
 
-                <asp:ListItem>Best America Roots Song</asp:ListItem>
+                <asp:ListItem>Best American Roots Song</asp:ListItem>
                 <asp:ListItem>Best Country Song</asp:ListItem>
                 <asp:ListItem>Best Rap Song</asp:ListItem>
                 <asp:ListItem>Best R&amp;B Song</asp:ListItem>
@@ -85,8 +85,8 @@ union
 select distinct year
 from song_nomination
 where (@DropDownList2 = 'Song of the Year' and genre_id = 1) 
-or (@DropDownList2 = 'America Roots Song' and genre_id = 3) 
-or (@DropDownList2 = 'Country Song' and genre_id = 6) 
+or (@DropDownList2 = 'Best American Roots Song' and genre_id = 3) 
+or (@DropDownList2 = 'Best Country Song' and genre_id = 6) 
 or (@DropDownList2 = 'Best R&amp;B Song' and genre_id = 14) 
 or (@DropDownList2 = 'Best Rap Song' and genre_id = 15) 
 or (@DropDownList2 = 'Best Rock Song' and genre_id = 17) 
@@ -109,25 +109,7 @@ order by year">
         <div style="height: 73px; width: 160px; margin-left: 0px; margin-top: 35px;">
             <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource3" DataTextField="artist_name" DataValueField="artist_name">
             </asp:DropDownList>
-            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:CIS_556ConnectionString %>" SelectCommand="IF @RadioButtonList1 = 'Album'
-select album_name from album order by 1
-ELSE IF @RadioButtonList1 = 'Artist'
-select distinct artist_name 
-from artist a, album_artist b, song_artist c
-where a.artist_id = b.artist_id
-and a.artist_id = c.artist_id
-order by 1
-ELSE IF @RadioButtonList1 = 'Song'
-select distinct song_name 
-from song a, song_artist b, song_composer c
-where a.song_id = b.song_id
-and a.song_id = c.song_id
-order by 1
-ELSE IF @RadioButtonList1 = 'Songwriter'
-select composer_name from composer order by 1">
-                <SelectParameters>
-                    <asp:ControlParameter ControlID="RadioButtonList1" Name="RadioButtonList1" PropertyName="SelectedValue" />
-                </SelectParameters>
+            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:CIS_556ConnectionString %>" SelectCommand="SELECT [artist_name] FROM [artist]">
             </asp:SqlDataSource>
     </div>
 
@@ -179,8 +161,8 @@ and c.song_id = e.song_id
 and c.composer_id = f.composer_id
 and a.genre_id = g.genre_id
 and g.genre_id = case when @DropDownList2 = 'Song of the Year' then 1 
-when @DropDownList2 = 'America Roots Song' then 3 
-when @DropDownList2 = 'Country Song' then 6
+when @DropDownList2 = 'Best American Roots Song' then 3 
+when @DropDownList2 = 'Best Country Song' then 6
 when @DropDownList2 = 'Best R&amp;B Song' then 14
 when @DropDownList2 = 'Best Rap Song' then 15 
 when @DropDownList2 = 'Best Rock Song' then 17
