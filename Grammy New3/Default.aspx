@@ -4,17 +4,9 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    
-
-
-
-    
     <p>
         &nbsp;</p>
 
-    
-
-    
         <div style="height: 78px; float: left; margin-top: 35px; top:0;" id="Category">
             <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True">
                 <asp:ListItem>Album of the Year</asp:ListItem>

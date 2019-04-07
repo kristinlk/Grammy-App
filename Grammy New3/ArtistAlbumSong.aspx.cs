@@ -13,5 +13,16 @@ namespace Grammy_New3
         {
 
         }
+
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button2_Command(object sender, CommandEventArgs e)
+        {
+
+        }
     }
 }
