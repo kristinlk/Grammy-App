@@ -13,6 +13,7 @@
         </asp:RadioButtonList>
     </div>
 
+    <!-- 
 
     <div style="height: 73px; width: 160px; margin-left: 0px; margin-top: 35px;">
             <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource3" DataTextField="artist_name" DataValueField="artist_name">
@@ -35,18 +36,18 @@
                     select composer_name from composer order by 1
                     ">
                 <SelectParameters>
-                    <asp:Parameter Name="RadioButtonList1" DefaultValue="Artist"/> 
+
 
                 </SelectParameters>
             </asp:SqlDataSource>
     </div>
 
-    
+   
     <div style="height: 41px; width: 124px; float: left; margin-top: 35px;">
             <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Search" Width="89px" OnCommand ="Button2_Command" />
         </div>
 
-<!--    
+
 
     <div id ="output" style="height: 244px; width: 401px; bottom:0; margin-left: 221px; margin-top: 29px;">
 
