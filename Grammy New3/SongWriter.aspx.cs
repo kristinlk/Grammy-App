@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Grammy_New3
 {
-    public partial class Artist : Page
+    public partial class SongWriter : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

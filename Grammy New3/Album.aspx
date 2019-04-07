@@ -1,6 +1,6 @@
-﻿<%@ Page Title="Artist" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Artist.aspx.cs" Inherits="Grammy_New3.Artist" %>
+﻿<%@ Page Title="Album" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Album.aspx.cs" Inherits="Grammy_New3.Album" %>
 
-<asp:Content ID="BodyContent_artist" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h3>test</h3>
     <p></p>
 </asp:Content>

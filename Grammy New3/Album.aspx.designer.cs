@@ -10,6 +10,6 @@
 namespace Grammy_New3 {
     
     
-    public partial class Artist {
+    public partial class Album {
     }
 }
