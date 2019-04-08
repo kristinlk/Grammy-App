@@ -73,7 +73,7 @@ select composer_name from composer order by 1">
             <SortedDescendingCellStyle BackColor="#FFFDF8" />
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:CIS_556ConnectionString %>" SelectCommand="IF @RadioButtonList1 = 'Album'
+        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:CIS_556ConnectionString %>" SelectCommand="IF @DDL4 = 'Album'
 select distinct d.album_name as &quot;Album Name&quot;, c.artist_name as &quot;Artist Name&quot;, 
 case when a.status = 'Y' then 'Yes' when a.status = 'N' then 'No' end as &quot;Won?&quot;,
 case when e.genre_id = 1 then 'Album of the Year' when e.genre_id &gt; 1 then e.genre_name end as &quot;Genre&quot;,
@@ -85,7 +85,7 @@ and b.album_id = d.album_id
 and a.genre_id = e.genre_id
 and d.album_name = @DropDownList3
 order by 1,2
-IF @RadioButtonList1 = 'Artist'
+IF @DDL4= 'Artist'
 select b.artist_name as &quot;Artist&quot;, null as &quot;Name&quot;, 
 case when a.status = 'Y' then 'Yes' when a.status = 'N' then 'No' end as &quot;Won?&quot;, 'Best New Artist' as 'Genre', a.year as &quot;Year&quot;
 from artist_nomination a, artist b
@@ -122,7 +122,7 @@ and c.artist_id = d.artist_id
 and a.genre_id = e.genre_id
 and lower(d.artist_name) like lower('%' + @DropDownList3 + '%')
 order by 5,4,2
-IF @RadioButtonList1 = 'Song'
+IF @DDL4 = 'Song'
 select b.song_name as &quot;Song&quot;, c.artist_name as &quot;Artist&quot;,  
 case when a.status = 'Y' then 'Yes' when a.status = 'N' then 'No' end as &quot;Won?&quot;, 'Record of the Year' as 'Genre', a.year as &quot;Year&quot;
 from record_nomination a, song b, artist c
@@ -140,7 +140,7 @@ and a.artist_id = c.artist_id
 and a.genre_id = d.genre_id
 and b.song_name = @DropDownList3
 order by 1,2
-IF @RadioButtonList1 = 'Songwriter'
+IF @DDL4 = 'Songwriter'
 select distinct d.composer_name as &quot;Composer Name&quot;, c.song_name, f.artist_name as &quot;Performing Artist&quot;, 
 case when a.status = 'Y' then 'Yes' when a.status = 'N' then 'No' end as &quot;Won?&quot;,
 case when g.genre_id = 1 then 'Song of the Year' when g.genre_id &gt; 1 then g.genre_name end as &quot;Genre&quot;,
@@ -155,7 +155,7 @@ and a.genre_id = g.genre_id
 and lower(d.composer_name) like lower('%' + @DropDownList3 + '%')
 order by 6,2">
             <SelectParameters>
-                <asp:ControlParameter ControlID="RadioButtonList1" Name="RadioButtonList1" PropertyName="SelectedValue" />
+                <asp:ControlParameter ControlID="DDL4" Name="DDL4" PropertyName="SelectedValue" />
                 <asp:ControlParameter ControlID="DropDownList3" Name="DropDownList3" PropertyName="SelectedValue" />
             </SelectParameters>
         </asp:SqlDataSource>
