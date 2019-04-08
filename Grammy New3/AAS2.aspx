@@ -8,25 +8,26 @@
 
 <div style="float: left; width: 153px;">
 
-    <!--
+  <!--
                 <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True">
                 <asp:ListItem Value="Artist" Selected="True">Artist</asp:ListItem>
                 <asp:ListItem Value="Album">Album</asp:ListItem>
                 <asp:ListItem Value="Song">Song</asp:ListItem>
                 <asp:ListItem Value="Songwriter">Songwriter</asp:ListItem>
             </asp:RadioButtonList>
-    -->
+       --> 
     <asp:DropDownList ID="DDL4" runat="server" AutoPostBack="True">
         <asp:ListItem>Artist</asp:ListItem>
         <asp:ListItem>Album</asp:ListItem>
         <asp:ListItem>Song</asp:ListItem>
         <asp:ListItem>Songwriter</asp:ListItem>
     </asp:DropDownList>
+       
 </div>
 
 
     <div style="height: 73px; width: 160px; margin-left: 0px; margin-top: 35px;">
-            <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource3" AutoPostBack="True" DataTextField="artist_name" DataValueField="artist_name">
+            <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource3" AutoPostBack="False" DataMember="DefaultView">
 
             
             </asp:DropDownList>
