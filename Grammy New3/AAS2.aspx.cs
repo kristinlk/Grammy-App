@@ -7,22 +7,12 @@ using System.Web.UI.WebControls;
 
 namespace Grammy_New3
 {
-    public partial class ArtistAlbumSong : Page
+    public partial class AAS2 : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
-
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Button2_Command(object sender, CommandEventArgs e)
-        {
-
-        }
+ 
     }
 }

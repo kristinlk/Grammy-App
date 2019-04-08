@@ -111,7 +111,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ArtistAlbumSong.aspx" />
+    <Content Include="AAS2.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -132,6 +132,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Properties\PublishProfiles\GrammyApp - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\GrammyNew320190407074621 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\GrammyNewDD - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -169,12 +170,12 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArtistAlbumSong.aspx.cs">
-      <DependentUpon>ArtistAlbumSong.aspx</DependentUpon>
+    <Compile Include="AAS2.aspx.cs">
+      <DependentUpon>AAS2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ArtistAlbumSong.aspx.designer.cs">
-      <DependentUpon>ArtistAlbumSong.aspx</DependentUpon>
+    <Compile Include="AAS2.aspx.designer.cs">
+      <DependentUpon>AAS2.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
