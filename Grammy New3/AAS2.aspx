@@ -60,15 +60,8 @@ select composer_name from composer order by 1">
 
 
 
-        <asp:GridView ID="GridView1" runat="server" CellPadding="4" DataSourceID="SqlDataSource4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False">
+        <asp:GridView ID="GridView1" runat="server" CellPadding="4" DataSourceID="SqlDataSource4" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-            <Columns>
-                <asp:BoundField DataField="Album Name" HeaderText="Album Name" SortExpression="Album Name" />
-                <asp:BoundField DataField="Artist Name" HeaderText="Artist Name" SortExpression="Artist Name" />
-                <asp:BoundField DataField="Won?" HeaderText="Won?" ReadOnly="True" SortExpression="Won?" />
-                <asp:BoundField DataField="Genre" HeaderText="Genre" ReadOnly="True" SortExpression="Genre" />
-                <asp:BoundField DataField="Year" HeaderText="Year" SortExpression="Year" />
-            </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
