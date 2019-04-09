@@ -60,8 +60,15 @@ select composer_name from composer order by 1">
 
 
 
-        <asp:GridView ID="GridView1" runat="server" CellPadding="4" DataSourceID="SqlDataSource4" ForeColor="#333333" GridLines="None">
+        <asp:GridView ID="GridView1" runat="server" CellPadding="4" DataSourceID="SqlDataSource4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+            <Columns>
+                <asp:BoundField DataField="Album Name" HeaderText="Album Name" SortExpression="Album Name" />
+                <asp:BoundField DataField="Artist Name" HeaderText="Artist Name" SortExpression="Artist Name" />
+                <asp:BoundField DataField="Won?" HeaderText="Won?" ReadOnly="True" SortExpression="Won?" />
+                <asp:BoundField DataField="Genre" HeaderText="Genre" ReadOnly="True" SortExpression="Genre" />
+                <asp:BoundField DataField="Year" HeaderText="Year" SortExpression="Year" />
+            </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -85,7 +92,7 @@ and b.album_id = d.album_id
 and a.genre_id = e.genre_id
 and d.album_name = @DropDownList3
 order by 1,2
-IF @DDL4= 'Artist'
+IF @DDL4 = 'Artist'
 select b.artist_name as &quot;Artist&quot;, null as &quot;Name&quot;, 
 case when a.status = 'Y' then 'Yes' when a.status = 'N' then 'No' end as &quot;Won?&quot;, 'Best New Artist' as 'Genre', a.year as &quot;Year&quot;
 from artist_nomination a, artist b
@@ -111,7 +118,7 @@ and b.song_id = c.song_id
 and c.artist_id = d.artist_id
 and lower(d.artist_name) like lower('%' + @DropDownList3 + '%')
 union all
-select d.artist_name as &quot;Artist&quot;, b.song_name as &quot;Name&quot;,  
+select distinct d.artist_name as &quot;Artist&quot;, b.song_name as &quot;Name&quot;,  
 case when a.status = 'Y' then 'Yes' when a.status = 'N' then 'No' end as &quot;Won?&quot;, 
 case when e.genre_id = 1 then 'Song of the Year' when e.genre_id &gt; 1 then ('Best ' + e.genre_name + ' Song') end as &quot;Genre&quot;,
 a.year as &quot;Year&quot;
@@ -130,9 +137,9 @@ where a.song_id = b.song_id
 and a.artist_id = c.artist_id
 and b.song_name = @DropDownList3
 union all
-select b.song_name as &quot;Song&quot;, c.artist_name as &quot;Artist&quot;, 
+select distinct b.song_name as &quot;Song&quot;, c.artist_name as &quot;Artist&quot;, 
 case when a.status = 'Y' then 'Yes' when a.status = 'N' then 'No' end as &quot;Won?&quot;, 
-case when d.genre_id = 1 then 'Song of the Year' when d.genre_id &gt; 1 then d.genre_name end as &quot;Genre&quot;,
+case when d.genre_id = 1 then 'Song of the Year' when d.genre_id &gt; 1 then ('Best ' + d.genre_name + ' Song') end as &quot;Genre&quot;,
 a.year as &quot;Year&quot;
 from song_nomination a, song b, artist c, genre d
 where a.song_id = b.song_id
@@ -143,7 +150,7 @@ order by 1,2
 IF @DDL4 = 'Songwriter'
 select distinct d.composer_name as &quot;Composer Name&quot;, c.song_name, f.artist_name as &quot;Performing Artist&quot;, 
 case when a.status = 'Y' then 'Yes' when a.status = 'N' then 'No' end as &quot;Won?&quot;,
-case when g.genre_id = 1 then 'Song of the Year' when g.genre_id &gt; 1 then g.genre_name end as &quot;Genre&quot;,
+case when g.genre_id = 1 then 'Song of the Year' when g.genre_id &gt; 1 then ('Best ' + g.genre_name + ' Song') end as &quot;Genre&quot;,
 a.year as &quot;Year&quot;
 from song_nomination a, song_composer b, song c, composer d, song_artist e, artist f, genre g
 where a.song_id = c.song_id

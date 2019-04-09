@@ -128,16 +128,17 @@ end
 and @year = a.year
 order by 1
 ELSE IF @DropDownList2 like '%Song%'
-select f.composer_name as &quot;Composer&quot;, e.song_name as &quot;Song Name&quot;, d.artist_name as &quot;Performing Artist&quot;, 
+select e.composer_name as &quot;Composer&quot;, d.song_name as &quot;Song Name&quot;, c.artist_name as &quot;Performing Artist&quot;, 
 case when a.status = 'Y' then 'Yes' when a.status = 'N' then 'No' end as &quot;Won?&quot;
-from song_nomination a, song_artist as b, song_composer c, artist d, song e, composer f, genre g
+from song_nomination a, song_composer b, artist c, song d, composer e, genre f
 where a.song_id = b.song_id
-and b.artist_id = d.artist_id
-and b.song_id = e.song_id
-and c.song_id = e.song_id
-and c.composer_id = f.composer_id
-and a.genre_id = g.genre_id
-and g.genre_id = case when @DropDownList2 = 'Song of the Year' then 1 
+and a.artist_id = b.artist_id
+and a.composer_id = b.composer_id
+and b.song_id = d.song_id
+and b.artist_id = c.artist_id
+and b.composer_id = e.composer_id
+and a.genre_id = f.genre_id
+and f.genre_id = case when @DropDownList2 = 'Song of the Year' then 1 
 when @DropDownList2 = 'Best American Roots Song' then 3 
 when @DropDownList2 = 'Best Country Song' then 6
 when @DropDownList2 = 'Best R&amp;B Song' then 14
@@ -147,13 +148,12 @@ end
 and @year = a.year
 order by 2,1
 ELSE IF @DropDownList2 = 'Record of the Year'
-select c.song_name as &quot;Song Name&quot;, d.artist_name as &quot;Artist&quot;, 
+select distinct b.song_name as &quot;Song Name&quot;, c.artist_name as &quot;Artist&quot;, 
 case when a.status = 'Y' then 'Yes' when a.status = 'N' then 'No' end as &quot;Won?&quot;
-from record_nomination a, song_artist b, song c, artist d
+from record_nomination a, song b, artist c
 where a.song_id = b.song_id
-and b.song_id = c.song_id
-and b.artist_id = d.artist_id
-and @year = a.year
+and a.artist_id = c.artist_id
+and a.year = @year
 order by 1
 ELSE IF @DropDownList2 = 'Artist of the Year'
 select d.artist_name as &quot;Artist&quot;,
