@@ -66,7 +66,7 @@ select composer_name from composer order by 1">
 
 
 
-        <asp:GridView ID="GridView1" runat="server" CellPadding="4" DataSourceID="SqlDataSource4" ForeColor="#333333" GridLines="None">
+        <asp:GridView ID="GridView1" runat="server" CellSpacing="4" CellPadding="4" DataSourceID="SqlDataSource4" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

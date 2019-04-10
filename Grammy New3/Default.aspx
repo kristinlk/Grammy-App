@@ -197,7 +197,7 @@ order by 1">
         </SelectParameters>
     </asp:SqlDataSource>
 
-    <asp:GridView ID="GridView1" runat="server" AllowSorting="True" CellPadding="4" DataSourceID="SqlDataSource2" ForeColor="#333333" GridLines="None">
+    <asp:GridView ID="GridView1" runat="server" AllowSorting="True" CellSpacing="4" CellPadding="4" DataSourceID="SqlDataSource2" ForeColor="#333333" GridLines="None">
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <EditRowStyle BackColor="#999999" />
         <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
