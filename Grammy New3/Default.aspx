@@ -7,8 +7,17 @@
     <p>
         &nbsp;</p>
 
-        <div style="height: 78px; float: left; margin-top: 35px; top:0;" id="Category">
-            <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True">
+   
+   
+
+    <div style="height: 24px; width: 100px;left: 150px; top:130px; position:absolute" id="Lab1">
+        <asp:Label ID="Label1" runat="server" Text="Category"></asp:Label>
+
+    </div>
+        <div style="height: 21px; width: 200px; top:150px; left:150px; position:absolute" id="Category1">
+        
+
+            <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" Height="20px" Width="184px">
                 <asp:ListItem>Album of the Year</asp:ListItem>
                 <asp:ListItem>Artist of the Year</asp:ListItem>
                 <asp:ListItem>Record of the Year</asp:ListItem>
@@ -39,10 +48,16 @@
 
 
             </asp:DropDownList>
+            
         </div>
         
-        <div id="Year" style="float: left; width: 106px; height: 84px; margin-top: 35px;">
-            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="year" DataValueField="year">
+        <div style="position:absolute; top:130px; left:350px;">
+            <asp:Label ID="Year" runat="server" Text="Year"></asp:Label>
+        </div>
+
+        <div id="Year1" style="position:absolute; top:150px; left:350px; width: 98px;">
+             
+            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="year" DataValueField="year" Height="20px">
             </asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CIS_556ConnectionString %>" SelectCommand="select distinct year
 from album_nomination
@@ -90,14 +105,15 @@ order by year">
 
         
 
-        <div style="height: 41px; width: 124px; float: left; margin-top: 35px;">
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Search" Width="89px" OnCommand ="Button1_Command" />
+        <div style="position:absolute; top:148px; left:425px; height:52px; width: 100px;">
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Search" Width="89px" OnCommand ="Button1_Command" Height="25px" />
         </div>
     
-
+</div>
 
     
- <div id ="album_by_year" style="height: 244px; width: 401px; bottom:0; margin-left: 221px; margin-top: 29px;">
+ <div id ="album_by_year" style="height: 244px; width: 401px; left:150px; top: 200px; position: absolute;">
+    
 
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:CIS_556ConnectionString %>" SelectCommand="IF @DropDownList2 like '%Album%'
 select distinct d.album_name as &quot;Album Name&quot;, c.artist_name as &quot;Artist Name&quot;, 
@@ -128,24 +144,35 @@ end
 and @year = a.year
 order by 1
 ELSE IF @DropDownList2 like '%Song%'
-select e.composer_name as &quot;Composer&quot;, d.song_name as &quot;Song Name&quot;, c.artist_name as &quot;Performing Artist&quot;, 
-case when a.status = 'Y' then 'Yes' when a.status = 'N' then 'No' end as &quot;Won?&quot;
-from song_nomination a, song_composer b, artist c, song d, composer e, genre f
+select distinct c1.song_name as &quot;Song Name&quot;, 
+stuff((select distinct ',' + c.composer_name 
+from song_nomination a, song_composer b, composer c, artist d
 where a.song_id = b.song_id
-and a.artist_id = b.artist_id
 and a.composer_id = b.composer_id
-and b.song_id = d.song_id
-and b.artist_id = c.artist_id
-and b.composer_id = e.composer_id
-and a.genre_id = f.genre_id
-and f.genre_id = case when @DropDownList2 = 'Song of the Year' then 1 
+and a.artist_id = b.artist_id
+and b.song_id = c1.song_id
+and b.composer_id = c.composer_id
+and b.artist_id = d.artist_id
+and b.artist_id = d1.artist_id
+order by 1 
+FOR XML PATH('')), 1, 1, '') as 'Songwriter',
+d1.artist_name as 'Performing Artist',
+case when a1.status = 'Y' then 'Yes' when a1.status = 'N' then 'No' end as 'Won?'
+from song_nomination a1, song_composer b1, song c1, artist d1, genre e1
+where a1.song_id = b1.song_id
+and a1.composer_id = b1.composer_id
+and a1.artist_id = b1.artist_id
+and b1.song_id = c1.song_id
+and b1.artist_id = d1.artist_id
+and a1.genre_id = e1.genre_id
+and e1.genre_id = case when @DropDownList2 = 'Song of the Year' then 1 
 when @DropDownList2 = 'Best American Roots Song' then 3 
 when @DropDownList2 = 'Best Country Song' then 6
 when @DropDownList2 = 'Best R&amp;B Song' then 14
 when @DropDownList2 = 'Best Rap Song' then 15 
 when @DropDownList2 = 'Best Rock Song' then 17
 end 
-and @year = a.year
+and @year = a1.year
 order by 2,1
 ELSE IF @DropDownList2 = 'Record of the Year'
 select distinct b.song_name as &quot;Song Name&quot;, c.artist_name as &quot;Artist&quot;, 
@@ -184,11 +211,12 @@ order by 1">
         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
     </asp:GridView>
 
+     <asp:Label ID="Label2" runat="server" Text="<br> © 2019 - Developed by Kristin Kovarik and David Doellstedt"></asp:Label>
 
-    </div>
-    
+
    
 
     <br />
 
+    </div>
 </asp:Content>

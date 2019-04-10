@@ -1,4 +1,4 @@
-﻿<%@ Page Title="AAS2" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AAS2.aspx.cs" Inherits="Grammy_New3.AAS2" %>
+﻿<%@ Page Title="Search By Artist/Album/Song/Songwriter" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AAS2.aspx.cs" Inherits="Grammy_New3.AAS2" %>
 
 
 
@@ -6,7 +6,13 @@
     
             <p>&nbsp;</p>
 
-<div style="float: left; width: 153px;">
+
+        <div style="height: 24px; width: 100px;left: 150px; top:130px; position:absolute" id="Lab1">
+        <asp:Label ID="Label3" runat="server" Text="Search by"></asp:Label>
+
+    </div>
+
+<div style="height: 24px; width: 193px; left: 150px; top:150px; position: absolute">
 
   <!--
                 <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True">
@@ -26,7 +32,7 @@
 </div>
 
 
-    <div style="height: 73px; width: 160px; margin-left: 0px; margin-top: 35px;">
+    <div style="height: 21px; width: 162px; top:150px; left:260px; position:absolute">
             <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource3" AutoPostBack="False" DataMember="DefaultView">
 
             
@@ -47,15 +53,15 @@ select composer_name from composer order by 1">
     </div>
 
     
-    <div style="height: 41px; width: 124px; float: left; margin-top: 35px;">
+    <div style="position:absolute; top:148px; left:557px; height:52px; width: 100px;">
             
-        <asp:Button ID="Button1" runat="server" Text="Button" />
+        <asp:Button ID="Button1" runat="server" Text="Search" Height="25px" />
             
         </div>
 
 
 
-    <div id ="output" style="height: 244px; width: 401px; bottom:0; margin-left: 221px; margin-top: 29px;">
+    <div id ="output" style="height: 244px; width: 401px; left:150px; top: 200px; position: absolute;">
 
 
 
@@ -76,7 +82,7 @@ select composer_name from composer order by 1">
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:CIS_556ConnectionString %>" SelectCommand="IF @DDL4 = 'Album'
 select distinct d.album_name as &quot;Album Name&quot;, c.artist_name as &quot;Artist Name&quot;, 
 case when a.status = 'Y' then 'Yes' when a.status = 'N' then 'No' end as &quot;Won?&quot;,
-case when e.genre_id = 1 then 'Album of the Year' when e.genre_id &gt; 1 then e.genre_name end as &quot;Genre&quot;,
+case when e.genre_id = 1 then 'Album of the Year' when e.genre_id &gt; 1 then ('Best ' + e.genre_name + ' Album') end as &quot;Genre&quot;,
 a.year as &quot;Year&quot;
 from album_nomination a, album_artist b, artist c, album d, genre e
 where a.album_id = b.album_id
@@ -141,18 +147,30 @@ and a.genre_id = d.genre_id
 and b.song_name = @DropDownList3
 order by 1,2
 IF @DDL4 = 'Songwriter'
-select distinct d.composer_name as &quot;Composer Name&quot;, c.song_name, f.artist_name as &quot;Performing Artist&quot;, 
-case when a.status = 'Y' then 'Yes' when a.status = 'N' then 'No' end as &quot;Won?&quot;,
-case when g.genre_id = 1 then 'Song of the Year' when g.genre_id &gt; 1 then ('Best ' + g.genre_name + ' Song') end as &quot;Genre&quot;,
-a.year as &quot;Year&quot;
-from song_nomination a, song_composer b, song c, composer d, song_artist e, artist f, genre g
-where a.song_id = c.song_id
-and b.composer_id = d.composer_id
-and b.song_id = c.song_id
-and e.song_id = c.song_id
-and e.artist_id = f.artist_id
-and a.genre_id = g.genre_id
-and lower(d.composer_name) like lower('%' + @DropDownList3 + '%')
+select distinct c1.song_name as &quot;Song Name&quot;, 
+stuff((select distinct ',' + c.composer_name 
+from song_nomination a, song_composer b, composer c, artist d
+where a.song_id = b.song_id
+and a.composer_id = b.composer_id
+and a.artist_id = b.artist_id
+and b.song_id = c1.song_id
+and b.composer_id = c.composer_id
+and b.artist_id = d.artist_id
+and b.artist_id = d1.artist_id 
+order by 1 
+FOR XML PATH('')), 1, 1, '') as 'Songwriter',
+d1.artist_name as 'Performing Artist',
+case when a1.status = 'Y' then 'Yes' when a1.status = 'N' then 'No' end as 'Won?',
+case when e1.genre_id = 1 then 'Song of the Year' when e1.genre_id &gt; 1 then ('Best ' + e1.genre_name + ' Song') end as &quot;Genre&quot;,
+a1.year as &quot;Year&quot;
+from song_nomination a1, song_composer b1, song c1, artist d1, genre e1
+where a1.song_id = b1.song_id
+and a1.composer_id = b1.composer_id
+and a1.artist_id = b1.artist_id
+and b1.song_id = c1.song_id
+and b1.artist_id = d1.artist_id
+and a1.genre_id = e1.genre_id
+and a1.composer_id in (select composer_id from composer where lower(composer_name) like lower('%' + @DropDownList3 + '%'))
 order by 6,2">
             <SelectParameters>
                 <asp:ControlParameter ControlID="DDL4" Name="DDL4" PropertyName="SelectedValue" />
