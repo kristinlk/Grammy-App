@@ -58,8 +58,8 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Search by Category</a></li>
-                        <li><a runat="server" href="~/AAS2">Seach by: Artist/Album/Song/Songwriter</a></li>
+                        <li><a runat="server" href="~/">Search by Award</a></li>
+                        <li><a runat="server" href="~/AAS2">Seach by Name</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                         
                         
