@@ -4,7 +4,7 @@
     <h3>Contact</h3>
 
     <address>
-        <strong>CIS556 Student 1:</strong>   <a href="mailto:kkovarik@umich.edu">kkovarik@umich.edu</a><br />
-        <strong>CIS556 Student 2:</strong> <a href="mailto:ddoellst@umich.edu">ddoellst@umich.edu</a>
+        <strong>Kristin Kovarik</strong>   <a href="mailto:kkovarik@umich.edu">kkovarik@umich.edu</a><br />
+        <strong>David Doellstedt</strong> <a href="mailto:ddoellst@umich.edu">ddoellst@umich.edu</a>
     </address>
 </asp:Content>

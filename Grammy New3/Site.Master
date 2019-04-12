@@ -46,6 +46,8 @@
             </Scripts>
         </asp:ScriptManager>
 
+        
+
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -54,6 +56,9 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+
+                    <asp:Image runat="server" ImageURL="~/Images/umd.jpg" Width="52px"></asp:Image>
+
                     <a class="navbar-brand" runat="server" href="~/">Home</a>
                 </div>
                 <div class="navbar-collapse collapse">
