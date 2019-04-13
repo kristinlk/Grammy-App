@@ -109,9 +109,7 @@ order by year">
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Search" Width="89px" OnCommand ="Button1_Command" Height="25px" />
         </div>
     
-</div>
 
-    
  <div id ="album_by_year" style="height: 244px; width: 401px; left:150px; top: 200px; position: absolute;">
     
 
@@ -206,7 +204,9 @@ order by 1">
         <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
         <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
         <SortedAscendingCellStyle BackColor="#E9E7E2" />
+
         <SortedAscendingHeaderStyle BackColor="#506C8C" />
+     
         <SortedDescendingCellStyle BackColor="#FFFDF8" />
         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
     </asp:GridView>

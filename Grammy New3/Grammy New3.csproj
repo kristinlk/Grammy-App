@@ -135,7 +135,7 @@
     <None Include="Properties\PublishProfiles\GrammyNew320190407074621 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\GrammyNewDD - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Images\umd.jpg" />
+    <Content Include="Images\umd.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
