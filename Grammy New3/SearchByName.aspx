@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Search By Artist/Album/Song/Songwriter" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AAS2.aspx.cs" Inherits="Grammy_New3.AAS2" %>
+﻿<%@ Page Title="SearchByName" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SearchByName.aspx.cs" Inherits="Grammy_New3.SearchByName" %>
 
 
 

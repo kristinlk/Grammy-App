@@ -10,7 +10,7 @@
 namespace Grammy_New3 {
     
     
-    public partial class AAS2 {
+    public partial class SearchByName {
         
         /// <summary>
         /// Label3 control.

@@ -111,8 +111,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AAS2.aspx" />
+    <Content Include="SearchByName.aspx" />
     <Content Include="About.aspx" />
+    <Content Include="WinnerByArtist.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -171,12 +172,12 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AAS2.aspx.cs">
-      <DependentUpon>AAS2.aspx</DependentUpon>
+    <Compile Include="SearchByName.aspx.cs">
+      <DependentUpon>SearchByName.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AAS2.aspx.designer.cs">
-      <DependentUpon>AAS2.aspx</DependentUpon>
+    <Compile Include="SearchByName.aspx.designer.cs">
+      <DependentUpon>SearchByName.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -187,6 +188,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="WinnerByArtist.aspx.cs">
+      <DependentUpon>WinnerByArtist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WinnerByArtist.aspx.designer.cs">
+      <DependentUpon>WinnerByArtist.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
