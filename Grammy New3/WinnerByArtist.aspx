@@ -13,6 +13,9 @@
         </series>
         <chartareas>
             <asp:ChartArea Name="ChartArea1">
+                <AxisX Interval="1" IsLabelAutoFit="False">
+                    <LabelStyle Angle="45" />
+                </AxisX>
             </asp:ChartArea>
         </chartareas>
     </asp:Chart>
