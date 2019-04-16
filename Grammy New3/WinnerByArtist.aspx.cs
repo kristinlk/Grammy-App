@@ -13,5 +13,10 @@ namespace Grammy_New3
         {
 
         }
+
+        protected void Chart1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
