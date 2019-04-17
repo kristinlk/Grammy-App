@@ -181,7 +181,7 @@ and a.artist_id = c.artist_id
 and a.year = @year
 order by 1
 ELSE IF @DropDownList2 = 'Artist of the Year'
-select d.artist_name as &quot;Artist&quot;,
+select distinct d.artist_name as &quot;Artist&quot;,
 case when a.status = 'Y' then 'Yes' when a.status = 'N' then 'No' end as &quot;Won?&quot;
 from artist_nomination a, artist d
 LEFT JOIN song_artist b on d.artist_id = b.artist_id
