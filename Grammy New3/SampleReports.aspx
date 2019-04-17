@@ -1,4 +1,4 @@
-﻿<%@ Page Title="WinnerByArtist" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="WinnerByArtist.aspx.cs" Inherits="Grammy_New3.WinnerByArtist" %>
+﻿<%@ Page Title="SampleReports" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SampleReports.aspx.cs" Inherits="Grammy_New3.SampleReports" %>
 
 <%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
 
@@ -6,9 +6,13 @@
 
 
 
+    <div style="position:absolute; left:50px; top:50px;">
+
+<div style = "top:0px;">
+        <h3>Most Total Awards/Nominations by Artist</h3>
+    </div>
+
     <div>
-
-
 
     <asp:Chart ID="Chart1" runat="server" DataSourceID="SqlDataSource5" Width="1125px">
         <series>
@@ -23,7 +27,7 @@
             </asp:ChartArea>
         </chartareas>
     </asp:Chart>
-    </div>
+    
     <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:CIS_556ConnectionString %>" SelectCommand="with artist_count as (
 select b.artist_name as &quot;Artist&quot;
 from artist_nomination a, artist b
@@ -56,16 +60,28 @@ group by artist
 having count(*) &gt;= 10
 order by 2 desc, 1"
         ></asp:SqlDataSource>
+        </div>
+        
+    </div>
+
+    <div style="position:absolute; left:50px; top:370px;">
+
+    <div style = "top:0px;">
+        <h3>So...Close... Most Nominations, with no Awards Won by Artist</h3>
+    </div>
 
     <div>
-    <asp:Chart ID="Chart2" runat="server" DataSourceID="SqlDataSource6" Width="1117px">
+
+    <asp:Chart ID="Chart2" runat="server" DataSourceID="SqlDataSource6" Width="1125px">
             <Series>
                 <asp:Series Name="Series1" YValueMembers="Nominations" XValueMember="Artist">
                 </asp:Series>
             </Series>
         <chartareas>
             <asp:ChartArea Name="ChartArea1">
-
+                <AxisX Interval="1" IsLabelAutoFit="False">
+                    <LabelStyle Angle="45" />
+                </AxisX>
             </asp:ChartArea>
         </chartareas>
         </asp:Chart>
@@ -105,13 +121,20 @@ where Wins = 0
 and Nominations &gt;= 5
 order by 2 desc, 1"
             ></asp:SqlDataSource>
-        
-    
-        <div>
-           
-            <asp:Chart ID="Chart3" runat="server" Width="1129px" DataSourceID="SqlDataSource7">
+        </div>
+    </div>
+
+        <div style="position:absolute; left:50px; top:690px;">
+
+            <div style = " top:0px;">
+                <h3>Artist of the Decade (Most awards earned)</h3>
+            </div>
+
+            <div>
+                
+            <asp:Chart ID="Chart3" runat="server" Width="522px" DataSourceID="SqlDataSource7">
                 <Series>
-                    <asp:Series Name="Series1" XValueMember="Decade | Artist" YValueMembers="Wins">
+                    <asp:Series Name="Series1" XValueMember="Decade | Artist" YValueMembers="Column1">
                     </asp:Series>
                 </Series>
                 <ChartAreas>
@@ -123,8 +146,7 @@ order by 2 desc, 1"
                 </ChartAreas>
             </asp:Chart>
 
-             <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:CIS_556ConnectionString %>" SelectCommand="
-with decade_count as (
+             <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:CIS_556ConnectionString %>" SelectCommand="with decade_count as (
 select b.artist_name as &quot;Artist&quot;, a.status as &quot;Status&quot;, a.year as &quot;Yearrange&quot;
 from artist_nomination a, artist b
 where a.artist_id = b.artist_id
@@ -147,7 +169,8 @@ where a.song_id = b.song_id
 and b.song_id = c.song_id
 and c.artist_id = d.artist_id
 ) 
-select CONCAT(Decade, SPACE(1) ,Artist) as &quot;Decade | Artist&quot;, sum(Wins) as &quot;Wins&quot; from (
+select CONCAT(Decade, SPACE(1) ,Artist) as &quot;Decade | Artist&quot;, max(&quot;Wins&quot;) from (
+select Decade, Artist, sum(Wins) as &quot;Wins&quot;,ROW_NUMBER() OVER (PARTITION BY decade ORDER BY sum(Wins) DESC) AS yearcount from (
 select artist, 
 case 
 when Yearrange like '195%' then '1950s'
@@ -159,18 +182,20 @@ when Yearrange like '200%' then '2000s'
 when Yearrange like '201%' then '2010s'
 end as &quot;Decade&quot;,
 count(*) as &quot;Wins&quot;
----,ROW_NUMBER() OVER (PARTITION BY Yearrange ORDER BY count(*) DESC) AS yearcount
 from decade_count
 where Status = 'Y'
 and artist != 'Various artists'
 group by artist, Yearrange
 ) as data
 group by data.artist, data.decade
-having sum(Wins) &gt; 3
+) as final
+where yearcount = 1
+group by final.Decade, final.artist
 order by 1,2"></asp:SqlDataSource>
         </div>
         
     
     </div>
 
+    
 </asp:Content>

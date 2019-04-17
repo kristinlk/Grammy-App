@@ -114,7 +114,7 @@
   <ItemGroup>
     <Content Include="SearchByName.aspx" />
     <Content Include="About.aspx" />
-    <Content Include="WinnerByArtist.aspx" />
+    <Content Include="SampleReports.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -189,12 +189,12 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="WinnerByArtist.aspx.cs">
-      <DependentUpon>WinnerByArtist.aspx</DependentUpon>
+    <Compile Include="SampleReports.aspx.cs">
+      <DependentUpon>SampleReports.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WinnerByArtist.aspx.designer.cs">
-      <DependentUpon>WinnerByArtist.aspx</DependentUpon>
+    <Compile Include="SampleReports.aspx.designer.cs">
+      <DependentUpon>SampleReports.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>

@@ -10,7 +10,7 @@
 namespace Grammy_New3 {
     
     
-    public partial class WinnerByArtist {
+    public partial class SampleReports{
         
         /// <summary>
         /// Chart1 control.

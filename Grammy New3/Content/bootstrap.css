@@ -1113,6 +1113,7 @@ figure {
 }
 img {
   vertical-align: middle;
+    margin-left: 0px;
 }
 .img-responsive,
 .thumbnail > img,

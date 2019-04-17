@@ -69,7 +69,7 @@
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Search by Award</a></li>
                         <li><a runat="server" href="~/SearchByName">Seach by Name</a></li>
-                        <li><a runat="server" href="~/WinnerByArtist">Top Winners by Artist</a></li>
+                        <li><a runat="server" href="~/SampleReports">Sample Reports</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                         
                         
