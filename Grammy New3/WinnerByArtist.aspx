@@ -65,9 +65,7 @@ order by 2 desc, 1"
             </Series>
         <chartareas>
             <asp:ChartArea Name="ChartArea1">
-                <AxisX Interval="1" IsLabelAutoFit="False">
-                    <LabelStyle Angle="45" />
-                </AxisX>
+
             </asp:ChartArea>
         </chartareas>
         </asp:Chart>
@@ -104,6 +102,26 @@ group by artist
 having count(artist) &gt; 5
 order by 2 desc, 1"
             ></asp:SqlDataSource>
+        
+    
+        <div>
+           
+            <asp:Chart ID="Chart3" runat="server" Width="726px">
+                <Series>
+                    <asp:Series Name="Series1">
+                    </asp:Series>
+                </Series>
+                <ChartAreas>
+                    <asp:ChartArea Name="ChartArea1">
+                        <AxisX Interval="1" IsLabelAutoFit="False">
+                            <LabelStyle Angle="45" />
+                        </AxisX>
+                    </asp:ChartArea>
+                </ChartAreas>
+            </asp:Chart>
+
+             <asp:SqlDataSource ID="SqlDataSource7" runat="server"></asp:SqlDataSource>
+        </div>
         
     
     </div>
