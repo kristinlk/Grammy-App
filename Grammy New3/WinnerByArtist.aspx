@@ -46,8 +46,9 @@ and a.genre_id = e.genre_id
 ) 
 select Artist, count(*) as &quot;Total Nominations/Wins&quot;
 from  artist_count
+where artist != 'Various artists'
 group by artist
-having count(*) &gt; 1
+having count(*) &gt;= 10
 order by 2 desc, 1"
         ></asp:SqlDataSource>
 
